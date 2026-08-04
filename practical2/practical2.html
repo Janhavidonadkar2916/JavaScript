@@ -1,0 +1,725 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>ShopMart</title>
+
+<style>
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:Segoe UI,sans-serif;
+}
+
+body{
+background:#f4f7fb;
+}
+
+header{
+
+background:#2874F0;
+
+color:white;
+
+padding:18px;
+
+font-size:28px;
+
+font-weight:bold;
+
+text-align:center;
+
+letter-spacing:1px;
+
+box-shadow:0 4px 10px rgba(0,0,0,.2);
+
+}
+
+.container{
+
+width:95%;
+
+max-width:1300px;
+
+margin:25px auto;
+
+}
+
+.customer{
+
+background:white;
+
+padding:20px;
+
+border-radius:12px;
+
+box-shadow:0 5px 12px rgba(0,0,0,.15);
+
+margin-bottom:25px;
+
+}
+
+.customer h2{
+
+margin-bottom:15px;
+
+color:#2874F0;
+
+}
+
+.customer input{
+
+width:100%;
+
+padding:12px;
+
+border-radius:8px;
+
+border:1px solid #ccc;
+
+font-size:16px;
+
+}
+
+.products{
+
+display:grid;
+
+grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+
+gap:20px;
+
+}
+
+.card{
+
+background:white;
+
+padding:20px;
+
+border-radius:15px;
+
+box-shadow:0 5px 15px rgba(0,0,0,.15);
+
+transition:.3s;
+
+}
+
+.card:hover{
+
+transform:translateY(-8px);
+
+}
+
+.card h3{
+
+color:#1d4ed8;
+
+margin-bottom:10px;
+
+}
+
+.price{
+
+color:green;
+
+font-size:24px;
+
+font-weight:bold;
+
+margin:15px 0;
+
+}
+
+.card label{
+
+font-weight:bold;
+
+}
+
+.card input{
+
+width:70px;
+
+padding:8px;
+
+text-align:center;
+
+margin:10px 0;
+
+border-radius:6px;
+
+border:1px solid #ccc;
+
+}
+
+.card button{
+
+width:100%;
+
+padding:12px;
+
+background:#ff9800;
+
+border:none;
+
+color:white;
+
+font-size:16px;
+
+border-radius:8px;
+
+cursor:pointer;
+
+transition:.3s;
+
+}
+
+.card button:hover{
+
+background:#fb8c00;
+
+}
+
+.cart{
+
+margin-top:35px;
+
+background:white;
+
+padding:25px;
+
+border-radius:12px;
+
+box-shadow:0 5px 15px rgba(0,0,0,.15);
+
+}
+
+.cart h2{
+
+color:#2874F0;
+
+margin-bottom:20px;
+
+}
+
+table{
+
+width:100%;
+
+border-collapse:collapse;
+
+}
+
+th{
+
+background:#2874F0;
+
+color:white;
+
+padding:12px;
+
+}
+
+td{
+
+padding:10px;
+
+text-align:center;
+
+border-bottom:1px solid #ddd;
+
+}
+
+.summary{
+
+margin-top:25px;
+
+display:flex;
+
+justify-content:space-between;
+
+align-items:center;
+
+flex-wrap:wrap;
+
+gap:15px;
+
+}
+
+.summary input{
+
+width:100px;
+
+padding:10px;
+
+border-radius:6px;
+
+border:1px solid #ccc;
+
+}
+
+.generate{
+
+background:#16a34a;
+
+color:white;
+
+padding:14px 25px;
+
+border:none;
+
+border-radius:8px;
+
+font-size:17px;
+
+cursor:pointer;
+
+}
+
+.generate:hover{
+
+background:#15803d;
+
+}
+
+#output{
+
+margin-top:30px;
+
+}
+
+.bill{
+
+background:white;
+
+padding:25px;
+
+border-radius:10px;
+
+box-shadow:0 5px 15px rgba(0,0,0,.15);
+
+}
+
+</style>
+
+</head>
+
+<body>
+
+<header>
+
+ SHOPMART ONLINE STORE
+
+</header>
+
+<div class="container">
+
+<div class="customer">
+
+<h2>Customer Details</h2>
+
+<input
+type="text"
+id="Name"
+placeholder="Enter Customer Name">
+
+</div>
+
+<div class="products">
+    <div class="card">
+<h3> Laptop</h3>
+<p class="price">₹55,000</p>
+<label>Quantity</label><br>
+<input type="number" id="laptopQty" value="1" min="1">
+<button onclick="addToCart('Laptop',55000,'laptopQty')">Add to Cart</button>
+</div>
+
+<div class="card">
+<h3> Smartphone</h3>
+<p class="price">₹25,000</p>
+<label>Quantity</label><br>
+<input type="number" id="phoneQty" value="1" min="1">
+<button onclick="addToCart('Smartphone',25000,'phoneQty')">Add to Cart</button>
+</div>
+
+<div class="card">
+<h3> Headphones</h3>
+<p class="price">₹2,500</p>
+<label>Quantity</label><br>
+<input type="number" id="headQty" value="1" min="1">
+<button onclick="addToCart('Headphones',2500,'headQty')">Add to Cart</button>
+</div>
+
+<div class="card">
+<h3> Smart Watch</h3>
+<p class="price">₹6,000</p>
+<label>Quantity</label><br>
+<input type="number" id="watchQty" value="1" min="1">
+<button onclick="addToCart('Smart Watch',6000,'watchQty')">Add to Cart</button>
+</div>
+
+<div class="card">
+<h3>⌨ Keyboard</h3>
+<p class="price">₹2,200</p>
+<label>Quantity</label><br>
+<input type="number" id="keyQty" value="1" min="1">
+<button onclick="addToCart('Keyboard',2200,'keyQty')">Add to Cart</button>
+</div>
+
+<div class="card">
+<h3> Wireless Mouse</h3>
+<p class="price">₹1,200</p>
+<label>Quantity</label><br>
+<input type="number" id="mouseQty" value="1" min="1">
+<button onclick="addToCart('Wireless Mouse',1200,'mouseQty')">Add to Cart</button>
+</div>
+
+<div class="card">
+<h3> Bluetooth Speaker</h3>
+<p class="price">₹3,500</p>
+<label>Quantity</label><br>
+<input type="number" id="speakerQty" value="1" min="1">
+<button onclick="addToCart('Bluetooth Speaker',3500,'speakerQty')">Add to Cart</button>
+</div>
+
+<div class="card">
+<h3> Backpack</h3>
+<p class="price">₹1,800</p>
+<label>Quantity</label><br>
+<input type="number" id="bagQty" value="1" min="1">
+<button onclick="addToCart('Backpack',1800,'bagQty')">Add to Cart</button>
+</div>
+</div>
+
+<div class="cart">
+
+    <h2>🛒 Shopping Cart</h2>
+
+    <table id="cartTable">
+
+        <thead>
+
+            <tr>
+
+                <th>Product</th>
+                <th>Price</th>
+                <th>Qty</th>
+                <th>Total</th>
+                <th>Action</th>
+
+            </tr>
+
+        </thead>
+
+        <tbody>
+
+        </tbody>
+
+    </table>
+
+    <div class="summary">
+
+        <div>
+
+            <label>Discount (%)</label><br>
+
+            <input
+                type="number"
+                id="Discount"
+                value="0"
+                min="0"
+                max="100">
+
+        </div>
+
+        <button
+            class="generate"
+            onclick="calculateBill()">
+
+            Generate Invoice
+
+        </button>
+
+    </div>
+
+    <div id="output"></div>
+
+</div>
+
+</div>
+
+<script>
+
+let cart=[];
+
+// --------------------
+// ADD TO CART
+// --------------------
+
+function addToCart(product,price,qtyId){
+
+    let quantity=Number(document.getElementById(qtyId).value);
+
+    if(quantity<=0){
+
+        alert("Enter valid quantity");
+
+        return;
+    }
+
+    let item=cart.find(p=>p.product===product);
+
+    if(item){
+
+        item.quantity+=quantity;
+
+        item.total=item.quantity*item.price;
+
+    }
+
+    else{
+
+        cart.push({
+
+            product:product,
+
+            price:price,
+
+            quantity:quantity,
+
+            total:price*quantity
+
+        });
+
+    }
+
+    displayCart();
+
+}
+
+// --------------------
+// DISPLAY CART
+// --------------------
+
+function displayCart(){
+
+    let tbody=document.querySelector("#cartTable tbody");
+
+    tbody.innerHTML="";
+
+    cart.forEach((item,index)=>{
+
+        tbody.innerHTML+=`
+
+        <tr>
+
+            <td>${item.product}</td>
+
+            <td>₹${item.price}</td>
+
+            <td>${item.quantity}</td>
+
+            <td>₹${item.total}</td>
+
+            <td>
+
+                <button
+                onclick="removeItem(${index})"
+                style="background:red;
+                color:white;
+                border:none;
+                padding:6px 10px;
+                border-radius:5px;
+                cursor:pointer;">
+
+                Remove
+
+                </button>
+
+            </td>
+
+        </tr>
+
+        `;
+
+    });
+
+}
+
+// --------------------
+// REMOVE ITEM
+// --------------------
+
+function removeItem(index){
+
+    cart.splice(index,1);
+
+    displayCart();
+
+}
+
+// --------------------
+// GENERATE BILL
+// --------------------
+
+function calculateBill(){
+
+    if(cart.length==0){
+
+        alert("Cart is Empty!");
+
+        return;
+
+    }
+
+    let customer=document.getElementById("Name").value;
+
+    if(customer==""){
+
+        alert("Enter Customer Name");
+
+        return;
+
+    }
+
+    let subtotal=0;
+
+    cart.forEach(item=>{
+
+        subtotal+=item.total;
+
+    });
+
+    let discount=
+
+    Number(document.getElementById("Discount").value);
+
+    let discountAmount=subtotal*discount/100;
+
+    let afterDiscount=subtotal-discountAmount;
+
+    let gst=afterDiscount*0.18;
+
+    let grandTotal=afterDiscount+gst;
+
+    let invoice="INV"+Math.floor(Math.random()*100000);
+
+    let date=new Date().toLocaleString();
+
+    let rows="";
+
+    cart.forEach(item=>{
+
+        rows+=`
+
+        <tr>
+
+        <td>${item.product}</td>
+
+        <td>${item.quantity}</td>
+
+        <td>₹${item.price}</td>
+
+        <td>₹${item.total}</td>
+
+        </tr>
+
+        `;
+
+    });
+
+    document.getElementById("output").innerHTML=`
+
+    <div class="bill">
+
+    <h2>SHOPMART</h2>
+
+    <hr><br>
+
+    <p><b>Invoice :</b> ${invoice}</p>
+
+    <p><b>Date :</b> ${date}</p>
+
+    <p><b>Customer :</b> ${customer}</p>
+
+    <br>
+
+    <table>
+
+    <tr>
+
+    <th>Product</th>
+
+    <th>Qty</th>
+
+    <th>Price</th>
+
+    <th>Total</th>
+
+    </tr>
+
+    ${rows}
+
+    </table>
+
+    <br>
+
+    <p><b>Subtotal :</b> ₹${subtotal.toFixed(2)}</p>
+
+    <p><b>Discount :</b> ₹${discountAmount.toFixed(2)}</p>
+
+    <p><b>GST (18%) :</b> ₹${gst.toFixed(2)}</p>
+
+    <hr>
+
+    <h2 style="color:green;">
+
+    Grand Total : ₹${grandTotal.toFixed(2)}
+
+    </h2>
+
+    <hr>
+
+    <center>
+
+    <h3>
+
+     Thank You For Shopping!!!
+
+    </h3>
+
+    <br>
+
+    <button
+
+    onclick="window.print()"
+
+    style="padding:12px 25px;
+    background:#2874F0;
+    color:white;
+    border:none;
+    border-radius:6px;
+    cursor:pointer;">
+
+    🖨 Print Invoice
+
+    </button>
+
+    </center>
+
+    </div>
+
+    `;
+
+}
+
+</script>
+
+</body>
+
+</html>

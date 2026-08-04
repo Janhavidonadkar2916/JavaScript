@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Vehicle Registration Validation</title>
+
+    <style>
+
+        *{
+            margin:0;
+            padding:0;
+            box-sizing:border-box;
+            font-family:Arial,sans-serif;
+        }
+
+        body{
+            background:linear-gradient(135deg,#74ebd5,#9face6);
+            display:flex;
+            justify-content:center;
+            align-items:center;
+            height:100vh;
+        }
+
+        .container{
+            width:400px;
+            background:white;
+            padding:30px;
+            border-radius:15px;
+            box-shadow:0 10px 20px rgba(0,0,0,0.2);
+        }
+
+        h2{
+            text-align:center;
+            color:#1565c0;
+            margin-bottom:25px;
+        }
+
+        label{
+            font-size:16px;
+            font-weight:bold;
+            color:#333;
+        }
+
+        input[type="text"]{
+            width:100%;
+            padding:12px;
+            margin-top:10px;
+            margin-bottom:20px;
+            border:2px solid #ccc;
+            border-radius:8px;
+            font-size:15px;
+            outline:none;
+            transition:0.3s;
+        }
+
+        input[type="text"]:focus{
+            border-color:#1565c0;
+            box-shadow:0 0 8px rgba(21,101,192,0.3);
+        }
+
+        input[type="button"]{
+            width:100%;
+            padding:12px;
+            background:#1565c0;
+            color:white;
+            border:none;
+            border-radius:8px;
+            font-size:16px;
+            cursor:pointer;
+            transition:0.3s;
+        }
+
+        input[type="button"]:hover{
+            background:#0d47a1;
+        }
+
+        #result{
+            margin-top:20px;
+            padding:12px;
+            text-align:center;
+            font-size:18px;
+            font-weight:bold;
+            border-radius:8px;
+            background:#f4f8ff;
+            border-left:5px solid #1565c0;
+        }
+
+    </style>
+
+</head>
+
+<body>
+
+<div class="container">
+
+    <h2> Vehicle Registration Validation</h2>
+
+    <label>Enter Vehicle Registration Number</label>
+
+    <input
+        type="text"
+        id="vehicle"
+        placeholder="Example: MH12AB1234">
+
+    <input
+        type="button"
+        value="Validate Vehicle Number"
+        onclick="validateVehicle()">
+
+    <p id="result"></p>
+
+</div>
+
+<script src="script.js"></script>
+
+</body>
+</html>
