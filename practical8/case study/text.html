@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+
+    <title>Gym Admission Form</title>
+
+    <style>
+
+        body {
+            font-family: Arial, sans-serif;
+            margin: 50px;
+        }
+
+        h2 {
+            text-align: center;
+        }
+
+        table {
+            border-collapse: collapse;
+            width: 500px;
+            margin: auto;
+        }
+
+        table,
+        th,
+        td {
+            border: 1px solid black;
+        }
+
+        th {
+            text-align: center;
+            padding: 5px;
+        }
+
+        td {
+            padding: 4px;
+        }
+
+        .label {
+            width: 45%;
+            font-weight: bold;
+        }
+
+        input[type="text"] {
+            width: 95%;
+            height: 22px;
+        }
+
+        select {
+            width: 98%;
+            height: 28px;
+        }
+
+        textarea {
+            width: 98%;
+            height: 70px;
+            resize: none;
+        }
+
+        .button-cell {
+            text-align: center;
+        }
+
+        button {
+            padding: 5px 25px;
+            cursor: pointer;
+        }
+
+        #message {
+            width: 500px;
+            margin: 15px auto;
+            text-align: center;
+            font-weight: bold;
+        }
+
+        .focus {
+            background-color: lightyellow;
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+    <h2>Gym Admission Form</h2>
+
+
+    <form id="gymForm">
+
+        <table>
+
+            <!-- Heading -->
+
+            <tr>
+
+                <th>Name</th>
+
+                <th>Value</th>
+
+            </tr>
+
+
+            <!-- Name -->
+
+            <tr>
+
+                <td class="label">
+                    Name
+                </td>
+
+                <td>
+
+                    <input
+                        type="text"
+                        id="name"
+                    >
+
+                </td>
+
+            </tr>
+
+
+            <!-- Sex -->
+
+            <tr>
+
+                <td class="label">
+                    Sex
+                </td>
+
+                <td>
+
+                    <input
+                        type="radio"
+                        name="gender"
+                        value="Male"
+                    >
+
+                    Male
+
+
+                    <br>
+
+
+                    <input
+                        type="radio"
+                        name="gender"
+                        value="Female"
+                    >
+
+                    Female
+
+                </td>
+
+            </tr>
+
+
+            <!-- Eye Color -->
+
+            <tr>
+
+                <td class="label">
+                    Eye color
+                </td>
+
+                <td>
+
+                    <select id="eyeColor">
+
+                        <option value="">
+                            Select
+                        </option>
+
+                        <option value="Black">
+                            Black
+                        </option>
+
+                        <option value="Brown">
+                            Brown
+                        </option>
+
+                        <option value="Blue">
+                            Blue
+                        </option>
+
+                        <option value="Green">
+                            Green
+                        </option>
+
+                    </select>
+
+                </td>
+
+            </tr>
+
+
+            <!-- Checkboxes -->
+
+            <tr>
+
+                <td class="label">
+                    Check all that apply
+                </td>
+
+                <td>
+
+                    <input
+                        type="checkbox"
+                        id="height"
+                    >
+
+                    Over 6 feet tall
+
+
+                    <br>
+
+
+                    <input
+                        type="checkbox"
+                        id="weight"
+                    >
+
+                    Over 200 Pounds
+
+                </td>
+
+            </tr>
+
+
+            <!-- Athletic Ability -->
+
+            <tr>
+
+                <td
+                    colspan="2"
+                    class="label"
+                >
+
+                    Describe your athletic ability:
+
+                    <br>
+
+                    <textarea
+                        id="ability"
+                    ></textarea>
+
+                </td>
+
+            </tr>
+
+
+            <!-- Button -->
+
+            <tr>
+
+                <td
+                    colspan="2"
+                    class="button-cell"
+                >
+
+                    <button type="submit">
+
+                        Enter my information
+
+                    </button>
+
+                </td>
+
+            </tr>
+
+
+        </table>
+
+    </form>
+
+
+    <div id="message"></div>
+
+
+    <script src="script.js"></script>
+
+</body>
+
+</html>

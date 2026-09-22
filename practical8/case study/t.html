@@ -1,0 +1,298 @@
+```html
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Gym Admission Form</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+
+        body {
+            margin: 0;
+            min-height: 100vh;
+            background: #eef2f7;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 25px;
+        }
+
+        .container {
+            width: 500px;
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.12);
+        }
+
+        h2 {
+            text-align: center;
+            color: #1976d2;
+            margin-bottom: 5px;
+        }
+
+        .subtitle {
+            text-align: center;
+            color: #777;
+            margin-bottom: 25px;
+        }
+
+        .form-group {
+            margin-bottom: 15px;
+        }
+
+        label {
+            display: block;
+            font-weight: bold;
+            margin-bottom: 6px;
+            color: #333;
+        }
+
+        input,
+        select {
+            width: 100%;
+            padding: 11px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 15px;
+        }
+
+        input:focus,
+        select:focus {
+            outline: none;
+            border-color: #1976d2;
+            background: #f5faff;
+        }
+
+        .error {
+            color: red;
+            font-size: 13px;
+            margin-top: 5px;
+        }
+
+        .fee-box {
+            background: #e3f2fd;
+            padding: 15px;
+            border-radius: 5px;
+            margin-top: 10px;
+            margin-bottom: 15px;
+            text-align: center;
+            color: #1976d2;
+        }
+
+        .fee-box h3 {
+            margin: 0;
+        }
+
+        .terms {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            margin-top: 15px;
+        }
+
+        .terms input {
+            width: auto;
+        }
+
+        .terms label {
+            margin: 0;
+            font-weight: normal;
+        }
+
+        button {
+            width: 100%;
+            padding: 12px;
+            margin-top: 20px;
+            background: #1976d2;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background: #125ca8;
+        }
+
+        #message {
+            text-align: center;
+            margin-top: 20px;
+            font-weight: bold;
+        }
+
+        @media (max-width: 550px) {
+            .container {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="container">
+
+        <h2>Gym Admission Form</h2>
+
+        <p class="subtitle">
+            Join us and start your fitness journey!
+        </p>
+
+        <form id="gymForm">
+
+            <!-- Full Name -->
+            <div class="form-group">
+
+                <label for="name">Full Name *</label>
+
+                <input
+                    type="text"
+                    id="name"
+                    placeholder="Enter your full name">
+
+                <div id="nameError" class="error"></div>
+
+            </div>
+
+            <!-- Age -->
+            <div class="form-group">
+
+                <label for="age">Age *</label>
+
+                <input
+                    type="number"
+                    id="age"
+                    placeholder="Enter your age">
+
+                <div id="ageError" class="error"></div>
+
+            </div>
+
+            <!-- Phone -->
+            <div class="form-group">
+
+                <label for="phone">Phone Number *</label>
+
+                <input
+                    type="text"
+                    id="phone"
+                    placeholder="Enter 10 digit phone number">
+
+                <div id="phoneError" class="error"></div>
+
+            </div>
+
+            <!-- Email -->
+            <div class="form-group">
+
+                <label for="email">Email *</label>
+
+                <input
+                    type="email"
+                    id="email"
+                    placeholder="Enter your email">
+
+                <div id="emailError" class="error"></div>
+
+            </div>
+
+            <!-- Membership -->
+            <div class="form-group">
+
+                <label for="membership">Membership Plan *</label>
+
+                <select id="membership">
+
+                    <option value="">
+                        Select Membership Plan
+                    </option>
+
+                    <option value="1500">
+                        Monthly - ₹1500
+                    </option>
+
+                    <option value="4000">
+                        Quarterly - ₹4000
+                    </option>
+
+                    <option value="7000">
+                        Half Yearly - ₹7000
+                    </option>
+
+                    <option value="12000">
+                        Yearly - ₹12000
+                    </option>
+
+                </select>
+
+                <div id="membershipError" class="error"></div>
+
+            </div>
+
+            <!-- Fee -->
+            <div class="fee-box">
+
+                <h3>
+                    Membership Fee:
+                    ₹<span id="fee">0</span>
+                </h3>
+
+            </div>
+
+            <!-- Fitness Goal -->
+            <div class="form-group">
+
+                <label for="goal">Fitness Goal</label>
+
+                <select id="goal">
+
+                    <option value="">
+                        Select Goal
+                    </option>
+
+                    <option>Weight Loss</option>
+                    <option>Muscle Gain</option>
+                    <option>Fitness</option>
+                    <option>Strength Training</option>
+
+                </select>
+
+            </div>
+
+            <!-- Terms -->
+            <div class="terms">
+
+                <input
+                    type="checkbox"
+                    id="terms">
+
+                <label for="terms">
+                    I agree to the gym rules and terms.
+                </label>
+
+            </div>
+
+            <button type="submit">
+                Submit Admission Form
+            </button>
+
+            <div id="message"></div>
+
+        </form>
+
+    </div>
+
+    <script src="script.js"></script>
+
+</body>
+</html>
+```

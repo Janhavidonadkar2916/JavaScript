@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>Theme Preference</title>
+
+    <style>
+
+        * {
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+
+        body {
+            margin: 0;
+            min-height: 100vh;
+
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+            background-color: white;
+            color: black;
+
+            transition: 0.3s;
+        }
+
+
+        .container {
+            width: 400px;
+
+            padding: 30px;
+
+            background-color: white;
+
+            border: 1px solid #ccc;
+
+            border-radius: 10px;
+
+            box-shadow: 0 0 10px gray;
+
+            text-align: center;
+        }
+
+
+        h2 {
+            margin-bottom: 10px;
+        }
+
+
+        p {
+            color: gray;
+        }
+
+
+        select {
+            width: 220px;
+
+            padding: 10px;
+
+            margin-top: 15px;
+
+            border: 1px solid #aaa;
+
+            border-radius: 5px;
+
+            font-size: 16px;
+
+            cursor: pointer;
+        }
+
+
+        button {
+            display: block;
+
+            width: 220px;
+
+            margin: 20px auto 0;
+
+            padding: 10px;
+
+            background-color: #007bff;
+
+            color: white;
+
+            border: none;
+
+            border-radius: 5px;
+
+            font-size: 16px;
+
+            cursor: pointer;
+        }
+
+
+        button:hover {
+            background-color: #0056b3;
+        }
+
+
+        #message {
+            margin-top: 20px;
+
+            font-weight: bold;
+        }
+
+
+        /* Dark Theme */
+
+        .dark {
+            background-color: #222;
+
+            color: white;
+        }
+
+
+        .dark .container {
+            background-color: #333;
+
+            border-color: #555;
+        }
+
+
+        .dark p {
+            color: #ccc;
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+    <div class="container">
+
+        <h2>User Theme Preferences</h2>
+
+        <p>
+            Select your preferred theme
+        </p>
+
+
+        <select id="theme">
+
+            <option value="">
+                Select Theme
+            </option>
+
+            <option value="light">
+                Light Theme
+            </option>
+
+            <option value="dark">
+                Dark Theme
+            </option>
+
+            <option value="clear">
+                Clear Preference
+            </option>
+
+        </select>
+
+
+        <button id="saveBtn">
+
+            Save Preference
+
+        </button>
+
+
+        <div id="message"></div>
+
+    </div>
+
+
+    <!-- External JavaScript -->
+
+    <script src="script.js"></script>
+
+
+</body>
+
+</html>
