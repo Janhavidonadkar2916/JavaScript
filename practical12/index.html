@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Live Task Board</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div class="app-shell">
+      <header class="topbar">
+        <div>
+          <p class="eyebrow">Real-time workspace</p>
+          <h1>Live Task Board</h1>
+        </div>
+        <div class="live-badge">
+          <span class="pulse"></span>
+          <span id="liveClock">--:--:--</span>
+        </div>
+      </header>
+
+      <main class="layout">
+        <section class="panel form-panel">
+          <h2>Add a task</h2>
+          <form id="taskForm">
+            <div class="field-group">
+              <label for="taskTitle">Task title</label>
+              <input id="taskTitle" name="taskTitle" type="text" placeholder="e.g. Prepare sprint review" required />
+            </div>
+
+            <div class="field-row">
+              <div class="field-group">
+                <label for="taskCategory">Category</label>
+                <select id="taskCategory" name="taskCategory">
+                  <option value="Work">Work</option>
+                  <option value="Personal">Personal</option>
+                  <option value="Study">Study</option>
+                </select>
+              </div>
+
+              <div class="field-group">
+                <label for="taskPriority">Priority</label>
+                <select id="taskPriority" name="taskPriority">
+                  <option value="High">High</option>
+                  <option value="Medium" selected>Medium</option>
+                  <option value="Low">Low</option>
+                </select>
+              </div>
+            </div>
+
+            <button type="submit" class="primary-btn">Add task</button>
+          </form>
+
+          <div class="actions">
+            <button id="loadRemote" class="secondary-btn" type="button">Load remote tasks</button>
+            <button id="clearCompleted" class="ghost-btn" type="button">Clear done</button>
+          </div>
+        </section>
+
+        <section class="panel board-panel">
+          <div class="board-header">
+            <h2>Tasks</h2>
+            <div class="filters">
+              <label for="taskFilter">Filter</label>
+              <select id="taskFilter">
+                <option value="all">All</option>
+                <option value="open">Open</option>
+                <option value="done">Done</option>
+              </select>
+            </div>
+          </div>
+
+          <div id="summary" class="summary" aria-live="polite"></div>
+          <ul id="taskList" class="task-list"></ul>
+          <p id="statusMessage" class="status-message" aria-live="polite"></p>
+        </section>
+      </main>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script src="script.js"></script>
+  </body>
+</html>

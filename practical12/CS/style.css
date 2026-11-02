@@ -1,0 +1,418 @@
+:root {
+  --navy: #101f35;
+  --navy-light: #19304e;
+  --cream: #f4f1e8;
+  --orange: #ee6b3a;
+  --yellow: #f6c451;
+  --ink: #172337;
+  --muted: #647086;
+  --line: #d7d9d5;
+  --white: #fffdf8;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  color: var(--ink);
+  background: var(--cream);
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+a {
+  color: inherit;
+}
+
+.site-header {
+  min-height: 640px;
+  color: var(--white);
+  background:
+    radial-gradient(circle at 82% 18%, rgba(246, 196, 81, .22), transparent 22rem),
+    linear-gradient(120deg, var(--navy) 0%, var(--navy-light) 100%);
+}
+
+.navbar,
+.hero,
+.section,
+.footer {
+  width: min(1120px, calc(100% - 64px));
+  margin-inline: auto;
+}
+
+.navbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 28px 0;
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-size: .76rem;
+  letter-spacing: .08em;
+  line-height: 1.25;
+  text-decoration: none;
+  text-transform: uppercase;
+}
+
+.brand-mark {
+  display: grid;
+  width: 48px;
+  height: 48px;
+  place-items: center;
+  color: var(--navy);
+  background: var(--yellow);
+  font-weight: 900;
+  letter-spacing: -.08em;
+  transform: rotate(-6deg);
+}
+
+.nav-links {
+  display: flex;
+  gap: 34px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  font-size: .82rem;
+  font-weight: 700;
+}
+
+.nav-links a {
+  position: relative;
+  text-decoration: none;
+}
+
+.nav-links a::after {
+  position: absolute;
+  right: 0;
+  bottom: -8px;
+  left: 0;
+  height: 2px;
+  content: "";
+  background: var(--yellow);
+  transform: scaleX(0);
+  transition: transform .2s ease;
+}
+
+.nav-links a:hover::after,
+.nav-links a:focus-visible::after,
+.nav-links .active::after {
+  transform: scaleX(1);
+}
+
+.menu-button {
+  display: none;
+  border: 0;
+  color: var(--white);
+  background: transparent;
+  font-size: 1.4rem;
+}
+
+.hero {
+  padding-top: 110px;
+  padding-bottom: 110px;
+}
+
+.eyebrow,
+.section-label {
+  margin: 0 0 18px;
+  color: var(--orange);
+  font-size: .72rem;
+  font-weight: 800;
+  letter-spacing: .16em;
+  text-transform: uppercase;
+}
+
+.hero h1,
+h2,
+h3 {
+  margin: 0;
+  font-family: Georgia, "Times New Roman", serif;
+}
+
+.hero h1 {
+  max-width: 700px;
+  font-size: clamp(3.2rem, 8vw, 6.6rem);
+  letter-spacing: -.055em;
+  line-height: .96;
+}
+
+.hero h1 span,
+h2 em {
+  color: var(--yellow);
+  font-style: normal;
+}
+
+.hero-copy {
+  max-width: 490px;
+  margin: 28px 0 34px;
+  color: #c4cfdd;
+  font-size: 1.05rem;
+  line-height: 1.7;
+}
+
+.button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 34px;
+  padding: 15px 19px;
+  border: 2px solid transparent;
+  font-size: .78rem;
+  font-weight: 800;
+  text-decoration: none;
+  text-transform: uppercase;
+  transition: transform .2s ease, background .2s ease;
+}
+
+.button:hover {
+  transform: translateY(-3px);
+}
+
+.button-light {
+  color: var(--navy);
+  background: var(--yellow);
+}
+
+.button-dark {
+  color: var(--white);
+  background: var(--navy);
+}
+
+.section {
+  padding: 92px 0;
+}
+
+.section-label {
+  color: var(--orange);
+}
+
+.two-column {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 90px;
+}
+
+h2 {
+  font-size: clamp(2.4rem, 5vw, 4.5rem);
+  letter-spacing: -.045em;
+  line-height: .98;
+}
+
+h2 em {
+  color: var(--orange);
+  font-style: italic;
+}
+
+.intro p,
+.opportunity p {
+  margin: 0 0 20px;
+  color: var(--muted);
+  font-size: 1.03rem;
+  line-height: 1.8;
+}
+
+.accent-text {
+  color: var(--orange) !important;
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: 1.25rem !important;
+  font-style: italic;
+  font-weight: 700;
+}
+
+hr {
+  width: min(1120px, calc(100% - 64px));
+  margin: 0 auto;
+  border: 0;
+  border-top: 1px solid var(--line);
+}
+
+.highlights h2 {
+  margin-bottom: 42px;
+}
+
+.card-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 18px;
+}
+
+.feature-card {
+  min-height: 245px;
+  padding: 28px;
+  background: #e8e7df;
+}
+
+.feature-card.featured {
+  color: var(--white);
+  background: var(--orange);
+}
+
+.card-number {
+  display: block;
+  margin-bottom: 54px;
+  color: var(--orange);
+  font-size: .72rem;
+  font-weight: 800;
+}
+
+.featured .card-number {
+  color: var(--yellow);
+}
+
+.feature-card h3 {
+  margin-bottom: 10px;
+  font-size: 1.4rem;
+}
+
+.feature-card p {
+  margin: 0;
+  color: var(--muted);
+  font-size: .9rem;
+  line-height: 1.6;
+}
+
+.featured p {
+  color: #fff0e8;
+}
+
+.achievement-layout {
+  align-items: end;
+}
+
+.stats {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 30px;
+}
+
+.stat {
+  border-top: 2px solid var(--ink);
+  padding-top: 15px;
+}
+
+.stat strong {
+  display: block;
+  color: var(--orange);
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: 2.7rem;
+}
+
+.stat span {
+  color: var(--muted);
+  font-size: .78rem;
+  font-weight: 700;
+}
+
+.opportunity {
+  display: flex;
+  align-items: end;
+  justify-content: space-between;
+  gap: 40px;
+}
+
+.opportunity > div {
+  max-width: 570px;
+}
+
+.footer {
+  display: flex;
+  justify-content: space-between;
+  padding: 55px 0;
+  color: var(--white);
+}
+
+.footer::before {
+  position: absolute;
+  right: 0;
+  left: 0;
+  z-index: -1;
+  height: 185px;
+  margin-top: -55px;
+  content: "";
+  background: var(--navy);
+}
+
+.footer h2 {
+  font-size: 2.1rem;
+}
+
+.footer-note {
+  color: #bcc7d4;
+  font-size: .78rem;
+  font-weight: 700;
+  line-height: 1.7;
+  text-align: right;
+  text-transform: uppercase;
+}
+
+.footer-note span {
+  color: var(--orange);
+}
+
+@media (max-width: 720px) {
+  .navbar,
+  .hero,
+  .section,
+  .footer,
+  hr {
+    width: min(100% - 40px, 560px);
+  }
+
+  .site-header {
+    min-height: auto;
+  }
+
+  .menu-button {
+    display: block;
+  }
+
+  .nav-links {
+    position: absolute;
+    top: 78px;
+    right: 20px;
+    left: 20px;
+    z-index: 2;
+    display: none;
+    padding: 18px;
+    background: var(--navy-light);
+  }
+
+  .nav-links.open {
+    display: grid;
+    gap: 18px;
+  }
+
+  .hero {
+    padding-top: 80px;
+    padding-bottom: 80px;
+  }
+
+  .two-column,
+  .card-grid {
+    grid-template-columns: 1fr;
+    gap: 28px;
+  }
+
+  .section {
+    padding: 65px 0;
+  }
+
+  .opportunity,
+  .footer {
+    align-items: start;
+    flex-direction: column;
+  }
+
+  .footer-note {
+    text-align: left;
+  }
+}

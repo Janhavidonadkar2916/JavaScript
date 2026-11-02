@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="Smart India Hackathon: innovation, collaboration, and problem solving."
+    />
+    <title>Smart India Hackathon | Innovate for India</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <header class="site-header" id="home">
+      <nav class="navbar" aria-label="Main navigation">
+        <a class="brand" href="#home">
+          <span class="brand-mark">SIH</span>
+          <span>Smart India<br /><strong>Hackathon</strong></span>
+        </a>
+        <button class="menu-button" type="button" aria-label="Open navigation menu">☰</button>
+        <ul class="nav-links">
+          <li><a class="active" href="#home">Home</a></li>
+          <li><a href="#about">About</a></li>
+          <li><a href="#achievements">Achievements</a></li>
+          <li><a href="#placements">Placements</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+      </nav>
+
+      <div class="hero">
+        <p class="eyebrow">India's largest open innovation movement</p>
+        <h1>Ideas that solve.<br /><span>Innovations that inspire.</span></h1>
+        <p class="hero-copy">
+          Smart India Hackathon brings students, mentors, and organisations together
+          to build technology-driven solutions for real-world challenges.
+        </p>
+        <a class="button button-light" href="#about">Explore the hackathon <span>→</span></a>
+      </div>
+    </header>
+
+    <main>
+      <section class="intro section" id="about">
+        <div class="section-label">01 / About the event</div>
+        <div class="two-column">
+          <h2>Building a smarter,<br /><em>stronger India.</em></h2>
+          <div>
+            <p>
+              <strong>Smart India Hackathon (SIH)</strong> is a nationwide initiative
+              that gives students a platform to solve the pressing problems we face
+              every day. Teams use creativity, coding, and collaboration to turn
+              bold ideas into practical solutions.
+            </p>
+            <p class="accent-text">Think differently. Build fearlessly. Create impact.</p>
+          </div>
+        </div>
+      </section>
+
+      <hr />
+
+      <section class="highlights section" aria-labelledby="highlights-heading">
+        <div class="section-label">02 / Why participate</div>
+        <h2 id="highlights-heading">More than a competition.</h2>
+        <div class="card-grid">
+          <article class="feature-card">
+            <span class="card-number">01</span>
+            <h3>Real problems</h3>
+            <p>Work on problem statements shared by ministries, industries, and public organisations.</p>
+          </article>
+          <article class="feature-card featured">
+            <span class="card-number">02</span>
+            <h3>Real teamwork</h3>
+            <p>Collaborate with diverse teammates and learn from mentors, experts, and fellow innovators.</p>
+          </article>
+          <article class="feature-card">
+            <span class="card-number">03</span>
+            <h3>Real impact</h3>
+            <p>Transform your prototype into a solution that can make a meaningful difference.</p>
+          </article>
+        </div>
+      </section>
+
+      <hr />
+
+      <section class="achievements section" id="achievements">
+        <div class="section-label">03 / Achievements</div>
+        <div class="two-column achievement-layout">
+          <h2>From ideas<br />to <em>impact.</em></h2>
+          <div class="stats" aria-label="Hackathon highlights">
+            <div class="stat"><strong>50K+</strong><span>Teams engaged</span></div>
+            <div class="stat"><strong>1M+</strong><span>Student innovators</span></div>
+            <div class="stat"><strong>2.5K+</strong><span>Problem statements</span></div>
+            <div class="stat"><strong>7</strong><span>Successful editions</span></div>
+          </div>
+        </div>
+      </section>
+
+      <hr />
+
+      <section class="placements section" id="placements">
+        <div class="section-label">04 / Opportunities</div>
+        <div class="opportunity">
+          <div>
+            <h2>Launch your<br /><em>next chapter.</em></h2>
+            <p>
+              Build a portfolio that stands out. SIH connects promising students
+              with industry leaders and creates pathways to internships,
+              placements, and entrepreneurship.
+            </p>
+          </div>
+          <a class="button button-dark" href="#contact">Get involved <span>→</span></a>
+        </div>
+      </section>
+    </main>
+
+    <footer class="footer" id="contact">
+      <div>
+        <p class="eyebrow">Smart India Hackathon</p>
+        <h2>Ready to make an impact?</h2>
+      </div>
+      <p class="footer-note">Learn. Collaborate. Innovate.<br /><span>© 2025 SIH</span></p>
+    </footer>
+
+    <script>
+      const menuButton = document.querySelector(".menu-button");
+      const navLinks = document.querySelector(".nav-links");
+
+      menuButton.addEventListener("click", () => {
+        navLinks.classList.toggle("open");
+      });
+
+      navLinks.addEventListener("click", (event) => {
+        if (event.target.matches("a")) {
+          navLinks.classList.remove("open");
+        }
+      });
+    </script>
+  </body>
+</html>
