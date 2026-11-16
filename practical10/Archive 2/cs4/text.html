@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Online Food Orders</title>
+	<script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+	<style>
+		body {
+			font-family: Arial, sans-serif;
+			margin: 0;
+			padding: 32px;
+			background: #f4f7fb;
+			color: #1f2937;
+		}
+
+		main {
+			max-width: 1000px;
+			margin: 0 auto;
+			padding: 28px;
+			background: #ffffff;
+			border-radius: 10px;
+			box-shadow: 0 4px 18px rgba(15, 23, 42, 0.08);
+		}
+
+		h1 { margin-top: 0; color: #163b65; }
+
+		button {
+			border: 0;
+			border-radius: 6px;
+			padding: 11px 18px;
+			background: #1769aa;
+			color: #ffffff;
+			cursor: pointer;
+			font-size: 15px;
+		}
+
+		button:disabled { background: #94a3b8; cursor: not-allowed; }
+
+		.order-form {
+			display: grid;
+			grid-template-columns: repeat(3, 1fr);
+			gap: 12px;
+			margin-top: 24px;
+			padding: 18px;
+			background: #f8fafc;
+			border: 1px solid #dbe3ec;
+			border-radius: 8px;
+		}
+
+		.order-form label { display: flex; flex-direction: column; gap: 5px; font-weight: bold; }
+		.order-form input, .order-form select { padding: 9px; border: 1px solid #b8c5d3; border-radius: 5px; font: inherit; }
+		.order-form button { align-self: end; }
+
+		#message { min-height: 22px; margin: 18px 0 8px; }
+		.error { color: #b42318; }
+
+		table {
+			width: 100%;
+			border-collapse: collapse;
+			margin-top: 10px;
+		}
+
+		th, td { border: 1px solid #dbe3ec; padding: 11px; text-align: left; }
+		th { background: #e8f1fa; color: #163b65; }
+		tbody tr:nth-child(even) { background: #f8fafc; }
+
+		.summary {
+			display: flex;
+			gap: 28px;
+			margin-top: 20px;
+			font-weight: bold;
+		}
+
+		@media (max-width: 700px) {
+			body { padding: 16px; }
+			main { padding: 20px; }
+			.order-form { grid-template-columns: 1fr; }
+			table { font-size: 13px; }
+			th, td { padding: 8px; }
+		}
+	</style>
+</head>
+<body>
+	<main>
+		<h1>Online Food Orders</h1>
+		<button id="viewOrders" type="button">View Orders</button>
+		<p id="message" role="status"></p>
+
+		<form class="order-form" id="orderForm">
+			<label>Order ID <input id="orderId" required></label>
+			<label>Customer Name <input id="customerName" required></label>
+			<label>Food Item <input id="foodItem" required></label>
+			<label>Quantity <input id="quantity" type="number" min="1" required></label>
+			<label>Total Amount ($) <input id="totalAmount" type="number" min="0.01" step="0.01" required></label>
+			<label>Order Status
+				<select id="orderStatus">
+					<option>Preparing</option>
+					<option>Ready</option>
+					<option>Delivered</option>
+				</select>
+			</label>
+			<button type="submit">Add Order</button>
+		</form>
+
+		<table id="ordersTable" hidden>
+			<thead>
+				<tr>
+					<th>Order ID</th>
+					<th>Customer Name</th>
+					<th>Food Item</th>
+					<th>Quantity</th>
+					<th>Total Amount</th>
+					<th>Order Status</th>
+				</tr>
+			</thead>
+			<tbody></tbody>
+		</table>
+
+		<div class="summary" id="summary" hidden>
+			<span>Total Orders: <strong id="orderCount">0</strong></span>
+			<span>Total Sales: $<strong id="salesTotal">0.00</strong></span>
+		</div>
+	</main>
+
+	<script>
+		$(function () {
+			var orders = [];
+
+			function renderOrders() {
+				var tableBody = $('#ordersTable tbody');
+				var totalSales = 0;
+
+				tableBody.empty();
+				$.each(orders, function (_, order) {
+					totalSales += Number(order.totalAmount) || 0;
+					$('<tr>').append(
+						$('<td>').text(order.orderId),
+						$('<td>').text(order.customerName),
+						$('<td>').text(order.foodItem),
+						$('<td>').text(order.quantity),
+						$('<td>').text('$' + (Number(order.totalAmount) || 0).toFixed(2)),
+						$('<td>').text(order.orderStatus)
+					).appendTo(tableBody);
+				});
+
+				$('#orderCount').text(orders.length);
+				$('#salesTotal').text(totalSales.toFixed(2));
+				$('#ordersTable, #summary').prop('hidden', false);
+			}
+
+			$('#viewOrders').on('click', function () {
+				var button = $(this);
+
+				button.prop('disabled', true);
+				$('#message').removeClass('error').text('Loading orders...');
+
+				$.getJSON('/api/orders')
+					.done(function (loadedOrders) {
+						orders = loadedOrders;
+						renderOrders();
+						$('#message').text('Orders loaded successfully.');
+					})
+					.fail(function () {
+						$('#message').addClass('error').text('Orders cannot be loaded. Start the Node server and try again.');
+					})
+					.always(function () {
+						button.prop('disabled', false);
+					});
+			});
+
+			$('#orderForm').on('submit', function (event) {
+				var form = this;
+					var orderId = $.trim($('#orderId').val());
+				var submitButton = $(form).find('button[type="submit"]');
+				var order = {
+					orderId: orderId,
+					customerName: $.trim($('#customerName').val()),
+					foodItem: $.trim($('#foodItem').val()),
+					quantity: Number($('#quantity').val()),
+					totalAmount: Number($('#totalAmount').val()),
+					orderStatus: $('#orderStatus').val()
+				};
+
+					event.preventDefault();
+				submitButton.prop('disabled', true);
+				$('#message').removeClass('error').text('Saving order...');
+
+				$.ajax({
+					url: '/api/orders',
+					type: 'POST',
+					contentType: 'application/json',
+					data: JSON.stringify(order)
+				})
+					.done(function () {
+						form.reset();
+						$('#message').removeClass('error').text('Order saved to items.json. Click View Orders to display it.');
+					})
+					.fail(function (xhr) {
+						var message = xhr.responseJSON && xhr.responseJSON.error;
+						$('#message').addClass('error').text(message || 'Order could not be saved.');
+					})
+					.always(function () {
+						submitButton.prop('disabled', false);
+					});
+				});
+		});
+	</script>
+</body>
+</html>

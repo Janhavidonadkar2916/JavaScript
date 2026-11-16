@@ -1,0 +1,50 @@
+[
+  {
+    "orderId": "ORD-1001",
+    "customerName": "Aarav Sharma",
+    "foodItem": "Margherita Pizza",
+    "quantity": 2,
+    "totalAmount": 24.98,
+    "orderStatus": "Preparing"
+  },
+  {
+    "orderId": "ORD-1002",
+    "customerName": "Maya Patel",
+    "foodItem": "Veggie Burger",
+    "quantity": 1,
+    "totalAmount": 12.5,
+    "orderStatus": "Ready"
+  },
+  {
+    "orderId": "ORD-1003",
+    "customerName": "Noah Williams",
+    "foodItem": "Chicken Biryani",
+    "quantity": 3,
+    "totalAmount": 38.25,
+    "orderStatus": "Delivered"
+  },
+  {
+    "orderId": "ORD-1004",
+    "customerName": "Janhavi",
+    "foodItem": "Fries",
+    "quantity": 2,
+    "totalAmount": 20,
+    "orderStatus": "Preparing"
+  },
+  {
+    "orderId": "ORD-1005",
+    "customerName": "Arpita",
+    "foodItem": "Pasta",
+    "quantity": 1,
+    "totalAmount": 12,
+    "orderStatus": "Preparing"
+  },
+  {
+    "orderId": "ORD-1006",
+    "customerName": "Devashish Itankar",
+    "foodItem": "Cheese Cake",
+    "quantity": 2,
+    "totalAmount": 30,
+    "orderStatus": "Preparing"
+  }
+]
